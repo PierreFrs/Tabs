@@ -1,7 +1,13 @@
-import React from 'react'
+import { useState } from 'react'
 import './Tabs.scss'
 
 const Tabs = () => {
+    const [tabIndex, setTabIndex] = useState(1);
+
+    const handleShowTab = (index) => {
+        setTabIndex(index);
+    }
+
   return (
     <section className='tabs-section --100vh --flex-center'>
         <div className="container">
@@ -11,23 +17,25 @@ const Tabs = () => {
             </div>
             <div className="tabs --flex-start --bg-light">
                 <div className="tabs-title">
-                    <button className='tab active-tab'>Who We Are</button>
-                    <button className='tab'>What We Do</button>
-                    <button className='tab'>Get In Touch</button>
+                    <button className={tabIndex === 1 ? 'tab active-tab' : 'tab'}
+                    onClick={() => handleShowTab(1)}>Who We Are</button>
+                    <button className={tabIndex === 2 ? 'tab active-tab' : 'tab'}
+                    onClick={() => handleShowTab(2)}>What We Do</button>
+                    <button className={tabIndex === 3 ? 'tab active-tab' : 'tab'}
+                    onClick={() => handleShowTab(3)}>Get In Touch</button>
                 </div>
                 <div className="tabs-content">
-                    <article className='content active-content'>
-                    <h4>Who We Are...</h4>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde repellat sapiente doloribus quasi quisquam doloremque voluptates, pariatur iure ex voluptatum eos omnis reprehenderit neque libero nemo consequuntur debitis ipsum atque.</p>
-                    <article className='content'>
+                    <article className={tabIndex === 1 ? 'content active-content' : 'content'}>
+                        <h4>Who We Are...</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde repellat sapiente doloribus quasi quisquam doloremque voluptates, pariatur iure ex voluptatum eos omnis reprehenderit neque libero nemo consequuntur debitis ipsum atque.</p>
+                    </article>
+                    <article className={tabIndex === 2 ? 'content active-content' : 'content'}>
                         <h4>What We Do...</h4>
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde repellat sapiente doloribus quasi quisquam doloremque voluptates, pariatur iure ex voluptatum eos omnis reprehenderit neque libero nemo consequuntur debitis ipsum atque.</p>
                     </article>
-                    <article className='content'>
+                    <article className={tabIndex === 3 ? 'content active-content' : 'content'}>
                         <h4>Get In Touch...</h4>
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde repellat sapiente doloribus quasi quisquam doloremque voluptates, pariatur iure ex voluptatum eos omnis reprehenderit neque libero nemo consequuntur debitis ipsum atque.</p>
-                    </article>
-                        
                     </article>
                 </div>
             </div>
